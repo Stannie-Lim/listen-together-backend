@@ -7,4 +7,4 @@ router.get('/', async(req, res, next) => {
     res.send('/api route');
 }); 
 
-router.use('/schools', require('./routes/schools'));
+router.use('/auth', require('./routes/auth'));

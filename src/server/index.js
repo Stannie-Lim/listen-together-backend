@@ -5,14 +5,9 @@ const db = require('./db/db');
 
 app.use(express.json());
 
-const staticFolder = path.join(__dirname, '..', '..', 'static')
-const distFolder = path.join(__dirname, '..', '..', 'dist')
-app.use(express.static(staticFolder))
-app.use(express.static(distFolder))
-
-app.get('/', (req, res, next) => {
-  res.sendFile(path.join(staticFolder, 'index.html'))
-});
+// app.get('/', (req, res, next) => {
+//   res.sendFile(path.join(staticFolder, 'index.html'))
+// });
 
 // api routes
 app.use('/api', require('./api'));
@@ -26,7 +21,8 @@ app.use((err, req, res, next)=> {
 
 const port = process.env.PORT || 3000;
 
-db.sync()
-  .then(()=> {
+// db.sync()
+  // .then(()=> {
     app.listen(port);
-  });
+    console.log(port);
+  // });
