@@ -23,6 +23,5 @@ const port = process.env.PORT || 3000;
 
 // db.sync()
   // .then(()=> {
-    app.listen(port);
-    console.log(port);
+    app.listen(port, () => console.log(port));
   // });
