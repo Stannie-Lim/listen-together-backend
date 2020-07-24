@@ -5,8 +5,8 @@ const {UUID, UUIDV4, INTEGER, STRING} = Sequelize
 const Room = db.define('room', {
   roomCode: {
     type: STRING,
-    defaultValue: Math.random().toString(36).substring(7),
-  },
+    primaryKey: true,
+  }
 })
 
 module.exports = Room

@@ -1,9 +1,9 @@
 const Room = require('./Room');
 const User = require('./User');
 
-// User.belongsTo(Room);
-// Room.hasMany(User);
+Room.belongsTo(User, { as: 'admin' });
 
 module.exports = {
-    Room
+    Room,
+    User
 }

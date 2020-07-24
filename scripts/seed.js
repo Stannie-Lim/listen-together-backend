@@ -2,12 +2,18 @@
 
 const db = require('../src/server/db/db')
 const {
-    Room
+    Room,
+    User
 } = require('../src/server/db/models');
 
 async function seed() {
-    console.log(Room, 'hello');
     await db.sync({force: true});
+    const user1 = await User.create({ id: 'hello' });
+    const [ room1, room2 ] = await Promise.all([
+        Room.create({ roomCode: Math.random().toString(36).substring(7), adminId: user1.id }),
+        Room.create({ roomCode: Math.random().toString(36).substring(7), adminId: user1.id }),
+        Room.create({ roomCode: Math.random().toString(36).substring(7), adminId: user1.id }),
+    ]);
     console.log('seeded');
 };
 

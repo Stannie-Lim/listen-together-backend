@@ -10,22 +10,6 @@
     "seed": "node scripts/seed.js",
     "start:dev": "nodemon src/server --ignore dist/ --ignore src/"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write",
-      "npm run lint-fix",
-      "git add"
-    ],
-    "*.{css,scss,json,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
