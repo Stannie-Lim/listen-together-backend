@@ -5,9 +5,9 @@ const db = require('./db/db');
 
 app.use(express.json());
 
-// app.get('/', (req, res, next) => {
-//   res.sendFile(path.join(staticFolder, 'index.html'))
-// });
+app.get('/', (req, res, next) => {
+  res.send('backend');
+});
 
 // api routes
 app.use('/api', require('./api'));
