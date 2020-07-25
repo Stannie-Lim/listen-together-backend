@@ -32,7 +32,7 @@ router.get('/get/all', async(req, res, next) => {
 router.post('/', async(req, res, next) => {
     const { id } = req.body;
     try {
-        const room = await Room.create({ roomCode: Math.random().toString(36).substring(7), adminId: id });
+        const room = await Room.create({ id: Math.random().toString(36).substring(7) });
         res.send(room);
     } catch(err) {
         next(err);
