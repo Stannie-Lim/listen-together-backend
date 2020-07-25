@@ -3,7 +3,7 @@ const db = require('../db')
 const {UUID, UUIDV4, INTEGER, STRING} = Sequelize
 
 const Room = db.define('room', {
-  roomCode: {
+  id: {
     type: STRING,
     primaryKey: true,
   }

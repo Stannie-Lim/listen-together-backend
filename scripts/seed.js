@@ -8,11 +8,12 @@ const {
 
 async function seed() {
     await db.sync({force: true});
-    const user1 = await User.create({ id: 'hello' });
+    const user1 = await User.create({ id: 'hello1' });
+    const user2 = await User.create({ id: 'hello2' });
     const [ room1, room2 ] = await Promise.all([
-        Room.create({ roomCode: Math.random().toString(36).substring(7), adminId: user1.id }),
-        Room.create({ roomCode: Math.random().toString(36).substring(7), adminId: user1.id }),
-        Room.create({ roomCode: Math.random().toString(36).substring(7), adminId: user1.id }),
+        Room.create({ id: Math.random().toString(36).substring(7), adminId: user1.id }),
+        Room.create({ id: Math.random().toString(36).substring(7), adminId: user1.id }),
+        Room.create({ id: Math.random().toString(36).substring(7), adminId: user1.id }),
     ]);
     console.log('seeded');
 };

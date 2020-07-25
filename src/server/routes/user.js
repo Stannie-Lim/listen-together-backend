@@ -3,7 +3,7 @@ const router = require('express').Router();
 require('dotenv').config();
 
 // models
-const { User } = require('../db/models');
+const { User, Room } = require('../db/models');
 
 module.exports = router;
 
@@ -21,4 +21,27 @@ router.post('/', async(req, res, next) => {
     } catch(err) {
         next(err);
     }
+});
+
+router.post('/join/:roomId', async(req, res, next) => {
+    const { roomId } = req.params;
+    const { id } = req.body;
+    try {
+        await User.update({ roomId }, { where: { id }});
+        const user = await User.findByPk(id);
+        res.send(user);
+    } catch(err) {
+        next(err);
+    }
+});
+
+router.post('/leave', async(req, res, next) => {
+    const { id } = req.body;
+    try {
+        await User.update({ roomId: null }, { where: { id }});
+        const user = await User.findByPk(id);
+        res.send(user);
+    } catch(err) {
+        next(err);
+    }   
 });
