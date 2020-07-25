@@ -12,8 +12,8 @@ module.exports = router;
 router.get('/:id', async(req, res, next) => {
     const { id } = req.params;
     try {
-        res.send(await Room.findAll({ 
-            where: { id },
+        res.send(await Room.findByPk(id,
+        {
             include: User
         }));
     } catch(err) {
