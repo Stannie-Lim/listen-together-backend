@@ -21,6 +21,14 @@ router.get('/:id', async(req, res, next) => {
     }
 });
 
+router.get('/get/all', async(req, res, next) => {
+    try {
+        res.send(await Room.findAll());
+    } catch(err) {
+        next(err);
+    }
+});
+
 router.post('/', async(req, res, next) => {
     const { id } = req.body;
     try {
