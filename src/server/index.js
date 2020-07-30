@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const db = require('./db/db');
+const { setUp } = require('./socketHelper');
 
 app.use(express.json());
 
@@ -23,5 +24,6 @@ const port = process.env.PORT || 3000;
 
 // db.sync()
   // .then(()=> {
-    app.listen(port, () => console.log(port));
+    const server = app.listen(port, ()=> console.log(`listening on port ${port}`))
+    setUp(server);
   // });
