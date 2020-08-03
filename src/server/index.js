@@ -1,8 +1,9 @@
+const socketio = require('socket.io');
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app);
 const path = require('path');
 const db = require('./db/db');
-const { setUp } = require('./socketHelper');
 
 app.use(express.json());
 
@@ -22,8 +23,8 @@ app.use((err, req, res, next)=> {
 
 const port = process.env.PORT || 3000;
 
-// db.sync()
-  // .then(()=> {
-    const server = app.listen(port, ()=> console.log(`listening on port ${port}`))
-    setUp(server);
-  // });
+const io = require('socket.io').listen(server);
+
+require('./socket')(io);
+
+server.listen(port, () => console.log(`listening on ${port}`));
