@@ -11,7 +11,11 @@ module.exports = router;
 // root route is /api/user
 
 router.get('/', async(req, res, next) => {
-    res.send(await User.findAll());
+    try {
+        res.send(await User.findAll());
+    } catch(err) {
+        next(err);
+    }
 });
 
 router.post('/', async(req, res, next) => {

@@ -24,7 +24,7 @@ router.get('/:id', async(req, res, next) => {
 
 router.get('/get/all', async(req, res, next) => {
     try {
-        res.send(await Room.findAll());
+        res.send(await Room.findAll({include: User}));
     } catch(err) {
         next(err);
     }
