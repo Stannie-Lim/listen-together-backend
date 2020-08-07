@@ -3,7 +3,8 @@
 const db = require('../src/server/db/db')
 const {
     Room,
-    User
+    User,
+    Queue
 } = require('../src/server/db/models');
 
 async function seed() {
@@ -15,6 +16,7 @@ async function seed() {
         Room.create({ id: Math.random().toString(36).substring(7), adminId: user1.id }),
         Room.create({ id: Math.random().toString(36).substring(7), adminId: user1.id }),
     ]);
+
     console.log('seeded');
 };
 

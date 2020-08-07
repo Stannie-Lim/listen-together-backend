@@ -5,3 +5,4 @@ module.exports = router;
 router.use('/auth', require('./routes/auth'));
 router.use('/room', require('./routes/room'));
 router.use('/user', require('./routes/user'));
+router.use('/queue', require('./routes/queue'));

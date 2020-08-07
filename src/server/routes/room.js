@@ -4,7 +4,7 @@ const router = require('express').Router();
 require('dotenv').config();
 
 // models
-const { Room, User } = require('../db/models');
+const { Room, User, Queue } = require('../db/models');
 
 module.exports = router;
 
@@ -15,7 +15,7 @@ router.get('/:id', async(req, res, next) => {
     try {
         res.send(await Room.findByPk(id,
         {
-            include: User
+            include: [Queue, User]
         }));
     } catch(err) {
         next(err);

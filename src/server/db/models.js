@@ -3,11 +3,13 @@ const db = require('./db')
 // register models
 const {
   Room,
-  User
+  User,
+  Queue
 } = require('./models/relations')
 
 module.exports = {
   db,
   Room,
-  User
+  User,
+  Queue
 }
