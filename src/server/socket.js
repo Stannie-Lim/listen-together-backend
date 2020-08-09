@@ -14,5 +14,9 @@ module.exports = (io) => {
       console.log(queue.length);
       io.in(room).emit('queue', queue);
     });
+
+    socket.on('foundintersection', intersection => {
+      io.in(room).emit('foundintersection', intersection);
+    });
   });
 };
