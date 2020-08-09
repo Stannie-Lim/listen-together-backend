@@ -40,7 +40,7 @@ router.post('/join/:roomId', async(req, res, next) => {
         const user = await User.findByPk(id);
         res.send(user);
     } catch(err) {
-        next(err);
+        res.status(500).send('roomnotfound');
     }
 });
 

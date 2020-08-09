@@ -7,16 +7,18 @@ module.exports = (io) => {
       room = roomCode;
       socket.join(roomCode);
       io.in(roomCode).emit('newuser', user);
-      // console.log(user, roomCode);
     });
     
     socket.on('queuesong', ({ queue }) => {
-      console.log(queue.length);
       io.in(room).emit('queue', queue);
     });
 
     socket.on('foundintersection', intersection => {
       io.in(room).emit('foundintersection', intersection);
+    });
+
+    socket.on('leaveroom', () => {
+      io.in(room).emit('disconnect');
     });
   });
 };
