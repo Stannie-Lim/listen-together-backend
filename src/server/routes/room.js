@@ -1,7 +1,7 @@
 const { socketServer } = require('../index');
 const axios = require('axios');
 const router = require('express').Router();
-require('dotenv').config();
+// require('dotenv').config();
 
 // models
 const { Room, User, Queue } = require('../db/models');

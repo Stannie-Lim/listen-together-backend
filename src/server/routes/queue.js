@@ -1,6 +1,6 @@
 const axios = require('axios');
 const router = require('express').Router();
-require('dotenv').config();
+// require('dotenv').config();
 
 // models
 const { Room, Queue } = require('../db/models');
