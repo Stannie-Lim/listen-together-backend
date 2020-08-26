@@ -4,12 +4,14 @@ const db = require('./db')
 const {
   Room,
   User,
-  Queue
+  Queue,
+  Song
 } = require('./models/relations')
 
 module.exports = {
   db,
   Room,
   User,
-  Queue
+  Queue, 
+  Song
 }

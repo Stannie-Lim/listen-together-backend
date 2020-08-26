@@ -4,7 +4,8 @@ const db = require('../src/server/db/db')
 const {
     Room,
     User,
-    Queue
+    Queue,
+    Song,
 } = require('../src/server/db/models');
 
 async function seed() {
@@ -16,6 +17,12 @@ async function seed() {
         Room.create({ id: Math.random().toString(36).substring(7), adminId: user1.id }),
         Room.create({ id: Math.random().toString(36).substring(7), adminId: user1.id }),
     ]);
+
+    await Song.create({ name: 'Cut To The Feeling', artist: 'Carly Rae Jepsen', spotifyUri: 'spotify:track:6EJiVf7U0p1BBfs0qqeb1f', imageUri: 'https://i.scdn.co/image/ab67616d0000b2737359994525d219f64872d3b1' });
+    await Song.create({ name: 'Cut To The Feeling', artist: 'Carly Rae Jepsen', spotifyUri: 'spotify:track:6EJiVf7U0p1BBfs0qqeb1f', imageUri: 'https://i.scdn.co/image/ab67616d0000b2737359994525d219f64872d3b1' });
+    await Song.create({ name: 'Cut To The Feeling', artist: 'Carly Rae Jepsen', spotifyUri: 'spotify:track:6EJiVf7U0p1BBfs0qqeb1f', imageUri: 'https://i.scdn.co/image/ab67616d0000b2737359994525d219f64872d3b1' });
+
+    await Queue.create();
 
     console.log('seeded');
 };

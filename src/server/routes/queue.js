@@ -1,9 +1,9 @@
 const axios = require('axios');
 const router = require('express').Router();
-// require('dotenv').config();
+require('dotenv').config();
 
 // models
-const { Room, Queue } = require('../db/models');
+const { Room, Queue, Song } = require('../db/models');
 
 // root route is /api/queue
 module.exports = router;
@@ -11,26 +11,24 @@ module.exports = router;
 router.get('/:id', async(req, res, next) => {
     const { id } = req.params;
     try {
-        res.send((await Queue.findByPk(id)).songQueue);
+        res.send((await Queue.findByPk(id, { include: [ Song ], order: [ 'updatedAt' ] })));
     } catch(err) {
         next(err);
     }
 });
 
 router.get('/get/all', async(req, res, next) => {
-    res.send(await Queue.findAll());
+    res.send(await Queue.findAll({ include: [Song] }));
 });
 
 router.post('/:roomId', async(req, res, next) => {
     const { roomId } = req.params;
-    const { queue } = req.body;
     try {
-        let stuff = await Queue.findOne({ where: { roomId }});
-        if(!stuff) {
-            stuff = await Queue.create({ roomId });
+        let queue = await Queue.findOne({ where: { roomId }});
+        if(!queue) {
+            queue = await Queue.create({ roomId });
         }
-        await stuff.update({ songQueue: queue });
-        res.send(stuff);
+        res.send(queue);
     } catch(err) {
         next(err);
     }

@@ -9,7 +9,7 @@
     "lint-fix": "npm run lint -- --fix",
     "seed": "node scripts/seed.js",
     "start": "npm run seed && node src/server",
-    "start:dev": "nodemon src/server --ignore dist/ --ignore src/"
+    "start:dev": "nodemon src/server --ignore dist/"
   },
   "keywords": [],
   "author": "",

@@ -7,9 +7,6 @@ const Queue = db.define('queue', {
     type: UUID,
     primaryKey: true,
     defaultValue: UUIDV4,
-  },
-  songQueue: {
-    type: TEXT
   }
 })
 

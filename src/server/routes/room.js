@@ -1,10 +1,10 @@
 const { socketServer } = require('../index');
 const axios = require('axios');
 const router = require('express').Router();
-// require('dotenv').config();
+require('dotenv').config();
 
 // models
-const { Room, User, Queue } = require('../db/models');
+const { Room, User, Queue, Song } = require('../db/models');
 
 module.exports = router;
 
@@ -24,7 +24,12 @@ router.get('/:id', async(req, res, next) => {
 
 router.get('/get/all', async(req, res, next) => {
     try {
-        res.send(await Room.findAll({include: User}));
+        res.send(await Room.findAll({include: [
+            { model: User }, 
+            { model: Queue, 
+                include: [Song] 
+            } 
+        ]}));
     } catch(err) {
         next(err);
     }

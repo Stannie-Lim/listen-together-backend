@@ -1,7 +1,7 @@
 const qs = require('qs')
 const axios = require('axios');
 const router = require('express').Router();
-// require('dotenv').config();
+require('dotenv').config();
 
 module.exports = router;
 
