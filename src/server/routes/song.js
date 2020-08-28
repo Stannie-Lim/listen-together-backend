@@ -62,3 +62,17 @@ router.get('/top', async(req, res, next) => {
         next(err);
     }
 });
+
+router.post('/playlist', async(req, res, next) => {
+    const { playlist, queueId } = req.body;
+    try {
+        const queue = [];
+        for(const song of playlist) {
+            queue.push(await Song.create({...song, queueId }));
+        }
+        console.log(queue);
+        res.send(queue);
+    } catch(err) {
+        next(err);
+    }
+});
